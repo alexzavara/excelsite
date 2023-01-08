@@ -1,0 +1,33 @@
+{
+  "name": "excel-course",
+  "version": "1.0.0",
+  "description": "JS app",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexzavara/excelsite.git"
+  },
+  "keywords": [
+    "js",
+    "javascript"
+  ],
+  "author": "Alexandr Zavarzin <alex.zavara2@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexzavara/excelsite/issues"
+  },
+  "homepage": "https://github.com/alexzavara/excelsite#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.7.2",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
