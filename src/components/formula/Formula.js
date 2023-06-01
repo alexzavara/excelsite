@@ -8,7 +8,7 @@ export class Formula extends ExcelComponent {
     // методы в super наследуется из конструктора ExcelComponent
     super($root, {
       name: 'Formula',
-      listenets: ['input', 'click']
+      listeners: ['input', 'click']
     });
   }
 
@@ -21,5 +21,9 @@ export class Formula extends ExcelComponent {
 
   onInput(event) {
     console.log('Formula: onInput', event);
+  }
+
+  onClick() {
+    console.log('mk');
   }
 }
