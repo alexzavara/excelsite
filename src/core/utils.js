@@ -1,3 +1,4 @@
+// Сделать заглавной первую букву
 export function capitalize(string) {
   if (typeof string !== 'string') {
     return '';

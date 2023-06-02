@@ -1,5 +1,6 @@
 import {capitalize} from './utils';
 
+// Методы класса отвечают за слушатели событий
 export class DomListener {
   constructor($root, listeners = []) {
     if (!$root) {
@@ -9,7 +10,7 @@ export class DomListener {
     this.listeners = listeners;
   }
 
-  // Название связанно с событием
+  // Возвращает метод на каждый слушатель из массива listeners
   initDOMListeners() {
     this.listeners.forEach(listener => {
       const method = getMethodName(listener);
@@ -19,13 +20,14 @@ export class DomListener {
             `Method ${method} is not implemented in ${name} Component`
         );
       }
-
+      // Название метода связанно с событием click -> onClick
       // Тоже самое что и addEventListener
       this[method] = this[method].bind(this);
       this.$root.on(listener, this[method]);
     })
   }
 
+  // Удаляет слушатели из массива listeners
   removeDOMListeners() {
     this.listeners.forEach(listener => {
       const method = getMethodName(listener);

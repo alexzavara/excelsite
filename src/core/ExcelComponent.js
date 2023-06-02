@@ -1,21 +1,24 @@
 import {DomListener} from './DomListener';
 
 // ExcelComponent наследуется от DomListener
+// В super методы наследуется из конструктора класса DomListener
 export class ExcelComponent extends DomListener {
   constructor($root, options = {}) {
-    // методы в super наследуется из конструктора DomListener
     super($root, options.listeners);
     this.name = options.name || '';
   }
+
   // Возвращает шаблон компонента
   toHTML() {
     return ''
   }
 
+  // Добавить слушатели
   init() {
     this.initDOMListeners();
   }
 
+  // Удалить слушатели
   destroy() {
     this.removeDOMListeners();
   }

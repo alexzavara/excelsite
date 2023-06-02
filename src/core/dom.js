@@ -19,19 +19,19 @@ class Dom {
 
   clear() {
     this.html();
-    console.log(this);
-    console.log(this.html);
     return this;
   }
 
+  // Добавление слушателя
   on(eventType, callback) {
     this.$el.addEventListener(eventType, callback);
   }
-
+  // Удаления слушателя
   off(eventType, callback) {
     this.$el.removeEventListener(eventType, callback);
   }
 
+  // Добавить элемент в компоненте определенного Класса
   append(node) {
     if (node instanceof Dom) {
       node = node.$el;
@@ -47,10 +47,13 @@ class Dom {
   }
 }
 
+// Экспортирует модуль $
+// Делает $el инстансом Dom
 export function $(selector) {
   return new Dom(selector);
 }
 
+// Создает элемент добавляет ему класс
 $.create = (tagName, classes = '') => { // Например div с каким то классом
   const el = document.createElement(tagName); // создать элемент
   if (classes) {
