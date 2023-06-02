@@ -15,14 +15,15 @@ function toColumn(col) {
   `
 }
 
-function createRow(content) {
+function createRow(content = '', info = '') {
   return `
     <div class="row">
-      <div class="row-info"></div>
+      <div class="row-info">${info}</div>
       <div class="row-data">${content}</div>
     </div>
   `
 }
+
 
 function toChar(_, index) {
   return String.fromCharCode(CODES.A + index)
@@ -31,7 +32,6 @@ function toChar(_, index) {
 export function createTable(rowsCount = 15) {
   const colsCount = CODES.Z - CODES.A + 1;
   const rows = [];
-
   const cols = new Array(colsCount)
       .fill('')
       .map(toChar)
@@ -41,7 +41,7 @@ export function createTable(rowsCount = 15) {
   rows.push(createRow(cols));
 
   for (let i = 0; i < rowsCount; i++) {
-    rows.push(createRow());
+    rows.push(createRow([], (i + 1)));
   }
 
   return rows.join('');

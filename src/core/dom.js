@@ -7,8 +7,8 @@ class Dom {
     : selector;
   }
 
-  // Если мы не передаем никаких параметров в метод -> getter
-  // Если передаем -> setter
+  // Если передаем строку, то она возвращается в innerHTML
+  // Если мы не передаем никаких параметров то в outerHTML
   html(html) {
     if (typeof html === 'string') {
       this.$el.innerHTML = html; // setter в случае если передана строка
@@ -19,6 +19,8 @@ class Dom {
 
   clear() {
     this.html();
+    console.log(this);
+    console.log(this.html);
     return this;
   }
 
