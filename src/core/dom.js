@@ -6,7 +6,6 @@ class Dom {
     ? document.querySelector(selector)
     : selector;
   }
-
   // Если передаем строку, то она возвращается в innerHTML
   // Если мы не передаем никаких параметров то в outerHTML
   html(html) {
@@ -16,12 +15,10 @@ class Dom {
     } // trim удаляет проблеы в переди и сзади строки
     return this.$el.outerHTML.trim(); // getter
   }
-
   clear() {
     this.html();
     return this;
   }
-
   // Добавление слушателя
   on(eventType, callback) {
     this.$el.addEventListener(eventType, callback);
@@ -30,7 +27,6 @@ class Dom {
   off(eventType, callback) {
     this.$el.removeEventListener(eventType, callback);
   }
-
   // Добавить элемент в компоненте определенного Класса
   append(node) {
     if (node instanceof Dom) {
@@ -45,14 +41,22 @@ class Dom {
 
     return this;
   }
+  closest(selector) {
+    return $(this.$el.closest(selector));
+  }
+
+  getCoords() {
+    return this.$el.getBoundingClientRect();
+  }
 }
 
 // Экспортирует модуль $
-// Делает $el инстансом Dom
+// Делает инстанс класса Dom с селектором (например $el)
 export function $(selector) {
   return new Dom(selector);
 }
 
+// Метод для функции - $
 // Создает элемент добавляет ему класс
 $.create = (tagName, classes = '') => { // Например div с каким то классом
   const el = document.createElement(tagName); // создать элемент
