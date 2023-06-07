@@ -57,6 +57,10 @@ class Dom {
   findAll(selector) {
     return this.$el.querySelectorAll(selector);
   }
+
+  // css(styles = {}) {
+  //   return this.$el.styles;
+  // }
 }
 
 // Экспортирует модуль $
