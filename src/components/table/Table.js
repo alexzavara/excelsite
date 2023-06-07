@@ -20,11 +20,12 @@ export class Table extends ExcelComponent {
     if (event.target.dataset.resize) {
       const $resizer = $(event.target);
       const $parent = $resizer.closest('[data-type="resizable"]');
-      const coords = $parent.getCoords()
+      const coords = $parent.getCoords();
 
       document.onmousemove = e => {
         const delta = Math.floor(e.pageX - coords.right);
         const value = coords.width + delta;
+
         $parent.$el.style.width = value + 'px';
       }
 
