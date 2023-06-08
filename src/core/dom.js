@@ -58,9 +58,18 @@ class Dom {
     return this.$el.querySelectorAll(selector);
   }
 
-  // css(styles = {}) {
-  //   return this.$el.styles;
-  // }
+  /*
+    obj {
+      hight: 100px;
+      width: 100px;
+      color: blue;
+    }
+  */
+  css(styles = {}) {
+    Object.keys(styles).forEach(key => {
+      this.$el.style[key] = styles[key];
+    });
+  }
 }
 
 // Экспортирует модуль $
