@@ -6,7 +6,7 @@ const CODES = {
 function toCell(row) {
   return function(_, col) {
     return `
-    <div 
+    <div
       class="cell"
       contenteditable
       data-col="${col}"

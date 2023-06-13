@@ -34,11 +34,13 @@ export class Table extends ExcelComponent {
     if (shouldResize(event)) {
       resizeHandler(this.$root, event);
     } else if (isCell(event)) {
+      const $target = $(event.target);
       if (event.shiftKey) {
-        const $target = $(event.target);
-        this.selection.selectGroup($target);
+        const currentCell = (this.selection.current.id(true));
+        const targetCell = ($target.id(true));
+
+        this.selection.selectGroup($target, currentCell, targetCell);
       } else {
-        const $target = $(event.target);
         this.selection.select($target);
       }
     }
