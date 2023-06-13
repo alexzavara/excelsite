@@ -54,6 +54,10 @@ class Dom {
     return this.$el.getBoundingClientRect();
   }
 
+  find(selector) {
+    return $(this.$el.querySelector(selector));
+  }
+
   findAll(selector) {
     return this.$el.querySelectorAll(selector);
   }
@@ -70,10 +74,20 @@ class Dom {
       this.$el.style[key] = styles[key];
     });
   }
+
+  addClass(className) {
+    this.$el.classList.add(className);
+  }
+
+  removeClass(className) {
+    this.$el.classList.remove(className);
+  }
 }
 
-// Экспортирует модуль $
-// Делает инстанс класса Dom с селектором (например $el)
+// Модуль $
+// Делает новый инстанс класса Dom с селектором
+// Например <div class="divselector">123</div>
+// new Dom(divselector)
 export function $(selector) {
   return new Dom(selector);
 }
