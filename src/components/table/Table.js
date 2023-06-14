@@ -1,6 +1,6 @@
 import {ExcelComponent} from '../../core/ExcelComponent';
 import {createTable} from './table.template';
-import {shouldResize, isCell} from './table.functions';
+import {shouldResize, isCell, matrix} from './table.functions';
 import {resizeHandler} from './table.resize';
 import {TableSelection} from './TableSelection';
 import {$} from '../../core/dom';
@@ -36,10 +36,10 @@ export class Table extends ExcelComponent {
     } else if (isCell(event)) {
       const $target = $(event.target);
       if (event.shiftKey) {
-        const currentCell = (this.selection.current.id(true));
-        const targetCell = ($target.id(true));
-
-        this.selection.selectGroup($target, currentCell, targetCell);
+        console.log(matrix($target, this.selection.current));
+        const $cells = matrix($target, this.selection.current)
+            .map(id => this.$root.find(`[data-id="${id}"]`))
+        this.selection.selectGroup($cells);
       } else {
         this.selection.select($target);
       }

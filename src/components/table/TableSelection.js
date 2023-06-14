@@ -14,19 +14,11 @@ export class TableSelection {
     this.current = $el;
   }
 
-  selectGroup($el, currentCell, targetCell) {
-    this.current = null;
-    const arr = [];
-    for (let row = currentCell.row; row <= targetCell.row; row++) {
-      for (let col = currentCell.col; col <= targetCell.col; col++) {
-        arr.push(row + ':' + col);
-      }
-    }
-
-    arr.forEach(el => {
-      document.querySelector(`[data-id="${el}"]`)
-          .classList.add('selected');
-      this.group.push($el);
+  selectGroup($group = []) {
+    this.clear();
+    this.group = $group;
+    this.group.forEach($el => {
+      $el.addClass(TableSelection.className);
     })
   }
 
