@@ -15,17 +15,19 @@ export class TableSelection {
   }
 
   selectGroup($el, currentCell, targetCell) {
-    const arr = []
+    this.current = null;
+    const arr = [];
     for (let row = currentCell.row; row <= targetCell.row; row++) {
       for (let col = currentCell.col; col <= targetCell.col; col++) {
         arr.push(row + ':' + col);
       }
     }
-    // arr.forEach(function(el) {
-    //   $el.find(`[data-id="${el}"]`).addClass(TableSelection.className);
-    // })
-    // this.group.push()
-    // console.log($el);
+
+    arr.forEach(el => {
+      document.querySelector(`[data-id="${el}"]`)
+          .classList.add('selected');
+      this.group.push($el);
+    })
   }
 
   clear() {
