@@ -8,9 +8,11 @@ import {$} from '../../core/dom';
 export class Table extends ExcelComponent {
   static className = 'excel__table';
 
-  constructor($root) {
+  constructor($root, options) {
     super($root, {
-      listeners: ['mousedown', 'keydown']
+      name: 'Table',
+      listeners: ['mousedown', 'keydown'],
+      ...options
     })
   }
 
@@ -27,6 +29,10 @@ export class Table extends ExcelComponent {
 
     super.init();
     this.selection.select($cell);
+
+    this.emitter.subscribe('any name', text => {
+      this.selection.current.text(text);
+    })
   }
 
 

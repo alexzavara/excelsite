@@ -6,25 +6,25 @@ export class ExcelComponent extends DomListener {
   constructor($root, options = {}) {
     super($root, options.listeners);
     this.name = options.name || '';
-
+    this.emitter = options.emitter;
     this.prepare();
   }
 
-  prepare() {
-
-  }
+  // Настройка компонента до инициализации
+  prepare() {}
 
   // Возвращает шаблон компонента
   toHTML() {
     return ''
   }
 
-  // Добавить слушатели
+  // Инициализация компонента
+  // Например добавить DOM слушателей
   init() {
     this.initDOMListeners();
   }
 
-  // Удалить слушатели
+  // Например удалить DOM слушателей
   destroy() {
     this.removeDOMListeners();
   }

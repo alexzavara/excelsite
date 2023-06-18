@@ -4,11 +4,12 @@ import {ExcelComponent} from '../../core/ExcelComponent';
 export class Formula extends ExcelComponent {
   static className = 'excel__formula';
 
-  constructor($root) {
+  constructor($root, options) {
     // методы в super наследуется из конструктора ExcelComponent
     super($root, {
       name: 'Formula',
-      listeners: ['input', 'click']
+      listeners: ['input'],
+      ...options
     });
   }
 
@@ -20,10 +21,7 @@ export class Formula extends ExcelComponent {
   }
 
   onInput(event) {
-    console.log('Formula: onInput', event);
-  }
-
-  onClick() {
-    console.log('mk');
+    const text = event.target.textContent.trim();
+    this.emitter.emit('any name', text)
   }
 }

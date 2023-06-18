@@ -6,7 +6,7 @@ class Dom {
     ? document.querySelector(selector)
     : selector;
   }
-  // Если передаем строку, то она возвращается в innerHTML
+  // Если передаем строку, то записывает ее в innerHTML
   // Если мы не передаем никаких параметров то в outerHTML
   html(html) {
     if (typeof html === 'string') {
@@ -15,6 +15,16 @@ class Dom {
     } // trim удаляет проблеы в переди и сзади строки
     return this.$el.outerHTML.trim(); // getter
   }
+
+  text(text) {
+    if (typeof text === 'string') {
+      this.$el.textContent = text;
+      return this;
+    }
+    return this.$el.textContent = String(text);
+  }
+
+  // Выов метода html с пустым полем параметров
   clear() {
     this.html();
     return this;
@@ -41,19 +51,19 @@ class Dom {
 
     return this;
   }
-
+  // Получить все дата атрибуты элемента
   get data() {
     return this.$el.dataset;
   }
-
+  // Поиск ближайшего элемета по селектору
   closest(selector) {
     return $(this.$el.closest(selector));
   }
-
+  // Возвращает объект с размераи элемента
   getCoords() {
     return this.$el.getBoundingClientRect();
   }
-
+  // Из data-id парит ID в виде объекта
   id(parse) {
     if (parse) {
       const parsed = this.id().split(':');
