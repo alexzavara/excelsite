@@ -8,7 +8,7 @@ export class Emitter {
   // trigger
   // Уведомляем слушателей если они есть
   // (строка, [элементы попадут в массив])
-  // table.emit('table.select', {a: 1})
+  // table.emit('table:select', {a: 1})
   emit(event, ...args) {
     if (!Array.isArray(this.listeners[event])) {
       return false;
@@ -23,7 +23,7 @@ export class Emitter {
   // Подписываемся на уведомления
   // Добавляем нового слушателя
   // (строка, функция) событие, callback
-  // formula.subscribe('table.select', () => {})
+  // formula.subscribe('table:select', () => {})
   subscribe(event, fn) {
     this.listeners[event] = this.listeners[event] || [];
     this.listeners[event].push(fn)

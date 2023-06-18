@@ -34,4 +34,8 @@ export class Excel {// this => Excel
     // Создание структуры компонентов + инициализация слушателей
     this.components.forEach(component => component.init());
   }
+
+  destroy() {
+    this.components.forEach(component => component.destroy());
+  }
 }
