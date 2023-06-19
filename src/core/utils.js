@@ -8,9 +8,16 @@ export function capitalize(string) {
 
 export function range(start, end) {
   if (start > end) {
-    [end, start] = [start, end]
+    [end, start] = [start, end];
   }
   return new Array(end - start + 1)
       .fill('')
       .map((_, index) => start + index);
+}
+
+export function storage(key, data = null) {
+  if (!data) {
+    return JSON.parse(localStorage.getItem(key));
+  }
+  localStorage.setItem(key, JSON.stringify(data));
 }

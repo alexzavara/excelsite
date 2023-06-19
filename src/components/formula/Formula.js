@@ -39,9 +39,9 @@ export class Formula extends ExcelComponent {
       this.$formula.text($cell.text())
     })
 
-    this.$subscribe(state => {
-      console.log('formula state', state);
-    })
+    // this.$subscribe(state => {
+    //   console.log('formula state', state);
+    // })
   }
 
   onInput(event) {
