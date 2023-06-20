@@ -5,7 +5,7 @@ const CODES = {
 
 const DEFAULT_WIDTH = 120;
 
-function getWidth(state, index) {
+function getWidth(state = {}, index) {
   return (state[index] || DEFAULT_WIDTH) + 'px';
 }
 
@@ -27,7 +27,7 @@ function toCell(state, row) {
 
 function toColumn({col, index, width}) {
   return `
-    <div 
+    <div
       class="column"
       data-col="${index}"
       data-type="resizable"
