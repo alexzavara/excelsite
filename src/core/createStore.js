@@ -1,9 +1,9 @@
 export function createStore(rootReducer, initialSate = {}) {
   let state = rootReducer({...initialSate}, {type: '__INIT__'});
-  let listeners = [];
+  let listeners = []; // subscribers
 
   return {
-    subscribe(fn) {
+    subscribe(fn) { // callback функция
       listeners.push(fn);
       return {
         unsubscribe() {
