@@ -9,11 +9,10 @@ import {storage} from './core/utils';
 import {initialState} from './components/redux/initialState';
 import './scss/index.scss';
 
-
+// Инструмент для обновления state приложения
 const store = createStore(rootReducer, initialState);
 
 store.subscribe(state => {
-  console.log('App state', state);
   storage('excel-state', state);
 });
 

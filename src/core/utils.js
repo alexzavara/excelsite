@@ -5,7 +5,7 @@ export function capitalize(string) {
   }
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
+// Возвращает массив чисел
 export function range(start, end) {
   if (start > end) {
     [end, start] = [start, end];
@@ -14,10 +14,19 @@ export function range(start, end) {
       .fill('')
       .map((_, index) => start + index);
 }
-
+// localStorage работает только со строками
+// Функция хелпер для преобразования в строку и обратно
 export function storage(key, data = null) {
   if (!data) {
     return JSON.parse(localStorage.getItem(key));
   }
   localStorage.setItem(key, JSON.stringify(data));
+}
+
+// Не будет работать со сложными ключами объекты - map, newDate, set ...
+export function isEqual(a, b) {
+  if (typeof a === 'object' && typeof b === 'object') {
+    return JSON.stringify(a) === JSON.stringify(b);
+  }
+  return a === b;
 }
