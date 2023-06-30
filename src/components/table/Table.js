@@ -38,10 +38,6 @@ export class Table extends ExcelComponent {
     this.$on('formula:done', () => {
       this.selection.current.focus();
     })
-
-    // this.$subscribe(state => {
-    //   console.log('table state', state);
-    // })
   }
 
   selectCell($cell) {
@@ -88,7 +84,7 @@ export class Table extends ExcelComponent {
       event.preventDefault();
       const id = this.selection.current.id(true);
       const $next = this.$root.find(nextSelection(key, id));
-      this.selectCell($next)
+      this.selectCell($next);
     }
   }
 
@@ -100,7 +96,6 @@ export class Table extends ExcelComponent {
   }
 
   onInput(event) {
-    // this.$emit('table:input', $(event.target))
-    this.updateTextInStore($(event.target).text())
+    this.updateTextInStore($(event.target).text());
   }
 }

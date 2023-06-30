@@ -1,6 +1,6 @@
+import {$} from '../../core/dom';
 import {Emitter} from '../../core/Emitter';
 import {StoreSubscriber} from '../../core/StoreSubscriber';
-import {$} from '../../core/dom';
 
 export class Excel {// this => Excel
   constructor(selector, options) {
