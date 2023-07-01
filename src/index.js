@@ -22,4 +22,6 @@ const excel = new Excel('#app', {
   store
 });
 
+console.log(excel);
+
 excel.render();
