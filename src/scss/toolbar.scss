@@ -10,6 +10,6 @@
     display: flex;
 
     .button {
-        @include button(green);
+        @include button(#11db11);
     }
 }
