@@ -8,7 +8,6 @@ const defaultState = {
   stylesState: {},
   currentState: '',
   currentStyles: defaultStyles,
-  defaultFileName: 'Новая таблица'
 }
 
 const normalise = state => ({

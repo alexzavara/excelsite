@@ -1,6 +1,6 @@
 export function createHeader() {
   const headerFileName = 'Новая таблица'
-  return `   
+  return `
     <input type="text" class="input" value="${headerFileName}">
     <div>
       <div class="button">
