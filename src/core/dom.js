@@ -26,9 +26,9 @@ class Dom {
     }
     return this.$el.textContent.trim();
   }
-  // Выов метода html с пустым полем параметров
+  // Вызов метода html с пустым полем параметров
   clear() {
-    this.html();
+    this.html('');
     return this;
   }
   // Добавление слушателя
