@@ -81,7 +81,7 @@ class Dom {
     this.$el.focus();
     return this;
   }
-
+  // Запись в атрибут элемента
   attr(name, value) {
     if (value) {
       this.$el.setAttribute(name, value);

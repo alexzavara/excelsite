@@ -3,8 +3,7 @@ import {Emitter} from '../../core/Emitter';
 import {StoreSubscriber} from '../../core/StoreSubscriber';
 
 export class Excel {// this => Excel
-  constructor(selector, options) {
-    this.$el = $(selector);
+  constructor(options) {
     this.components = options.components || [];
     this.store = options.store;
     this.emitter = new Emitter();
@@ -33,13 +32,10 @@ export class Excel {// this => Excel
   }
 
   // Отвечает за отрисовку
-  render() {
+  init() {
     // Добавляет в конец корневого элемента компоненты из getRoot
-    this.$el.append(this.getRoot());
-
     // Подписка компонентов, логика в Классе StoreSubscriber
     this.subscriber.subscribeComponents(this.components);
-
     // Создание структуры компонентов + инициализация слушателей
     this.components.forEach(component => component.init());
   }

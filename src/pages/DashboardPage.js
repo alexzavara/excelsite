@@ -1,22 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-  <title>Excel-Js</title>
-</head>
-<body>
-  <div id="app" class="container">
-    <div class="db">
+import {Page} from '../core/Page';
+import {$} from '../core/dom';
+
+export class DashboardPage extends Page {
+  getRoot() {
+    return $.create('div', 'db').html(`
       <div class="db__header">
         <h1>Excel таблицы</h1>
       </div>
       <div class="db__new">
         <div class="db__view">
-          <a href="#" class="db__create">Новая <br><br> таблица</a>
+          <a href="#" class="db__create">Новая </br> таблица</a>
         </div>
       </div>
       <div class="db__table db__view">
@@ -36,7 +29,6 @@
           </li>
         </ul>
       </div>
-    </div>
-  </div>
-</body>
-</html>
+    `)
+  }
+}
