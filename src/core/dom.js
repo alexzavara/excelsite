@@ -15,9 +15,9 @@ class Dom {
     } // trim удаляет проблеы в переди и сзади строки
     return this.$el.outerHTML.trim(); // getter
   }
-
+  // text, input
   text(text) {
-    if (typeof text === 'string') {
+    if (typeof text !== 'undefined') {
       this.$el.textContent = text;
       return this;
     }
@@ -26,7 +26,6 @@ class Dom {
     }
     return this.$el.textContent.trim();
   }
-
   // Выов метода html с пустым полем параметров
   clear() {
     this.html();
@@ -81,6 +80,14 @@ class Dom {
   focus() {
     this.$el.focus();
     return this;
+  }
+
+  attr(name, value) {
+    if (value) {
+      this.$el.setAttribute(name, value);
+      return this
+    }
+    return this.$el.getAttribute(name)
   }
 
   find(selector) {

@@ -4,6 +4,7 @@ import {shouldResize, isCell, matrix, nextSelection} from './table.functions';
 import {resizeHandler} from './table.resize';
 import {TableSelection} from './TableSelection';
 import {defaultStyles} from '../../constants';
+import {parse} from '../../core/parse';
 import {$} from '../../core/dom';
 import * as actions from '../redux/actions';
 
@@ -31,9 +32,11 @@ export class Table extends ExcelComponent {
     // Выбор первого cell при открытии таблицы
     this.selectCell(this.$root.find('[data-id="0:0"]'))
     // Связывает cell с formula
-    this.$on('formula:input', text => {
-      this.selection.current.text(text);
-      this.updateTextInStore(text);
+    this.$on('formula:input', value => {
+      this.selection.current
+          .attr('data-value', value)
+          .text(parse(value))
+      this.updateTextInStore(value);
     })
     // Фокус на выбранную ячейку cell
     this.$on('formula:done', () => {
