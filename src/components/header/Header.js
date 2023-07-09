@@ -28,10 +28,10 @@ export class Header extends ExcelComponent {
     const $target = $(event.target);
     if ($target.data.type === 'buttonDelete') {
       window.localStorage.removeItem('excel:' + window.location.hash.slice(7))
-      window.location = 'http://localhost:3000/'
+      window.location.hash = 'dashboard'
     }
     if ($target.data.type === 'buttonBack') {
-      window.location = 'http://localhost:3000/'
+      window.location.hash = 'dashboard'
     }
   }
 
