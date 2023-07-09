@@ -1,14 +1,15 @@
-function toHTML() {
+function toHTML(key) {
+  const thisStorage = JSON.parse(localStorage[key])
   return `
     <li class="db__record">
-      <a href="#">Таблица номер 1</a>
+      <a href="#excel/${key.slice(6)}">${thisStorage.title}</a>
       <strong>12.06.2020</strong>
     </li>
   `
 }
 
-// Excel:14234234
-// Excel:54765
+// excel:14234234
+// excel:54765
 function getAllKeys() {
   const keys = [];
   for (let i = 0; i < localStorage.length; i++) {

@@ -10,7 +10,7 @@ export class Header extends ExcelComponent {
   constructor($root, options) {
     super($root, {
       name: 'Header',
-      listeners: ['input'],
+      listeners: ['input', 'click'],
       ...options
     });
   }
@@ -24,16 +24,27 @@ export class Header extends ExcelComponent {
     this.$dispatch(changeTytle($target.text()));
   }
 
-  toHTML(state) {
+  onClick(event) {
+    const $target = $(event.target);
+    if ($target.data.type === 'buttonDelete') {
+      window.localStorage.removeItem('excel:' + window.location.hash.slice(7))
+      window.location = 'http://localhost:3000/'
+    }
+    if ($target.data.type === 'buttonBack') {
+      window.location = 'http://localhost:3000/'
+    }
+  }
+
+  toHTML() {
     const title = this.store.getState().title || defaultTitle;
     return `
       <input type="text" class="input" value="${title}">
       <div>
-        <div class="button">
-          <i class="material-icons">delete</i>
+        <div class="button" data-type="buttonDelete">
+          <i class="material-icons" data-type="buttonDelete">delete</i>
         </div>
-        <div class="button">
-          <i class="material-icons">exit_to_app</i>
+        <div class="button" data-type="buttonBack">
+          <i class="material-icons" data-type="buttonBack">exit_to_app</i>
         </div>
       </div>
     `

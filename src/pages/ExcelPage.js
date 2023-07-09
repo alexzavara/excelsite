@@ -21,7 +21,6 @@ export class ExcelPage extends Page {
     // Инструмент для обновления state приложения
     const store = createStore(rootReducer, normaliseInitialState(state));
     const stateListener = debounce(state => {
-      console.log(state);
       storage(storageName(params), state);
     }, 300)
 
