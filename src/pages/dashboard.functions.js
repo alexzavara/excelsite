@@ -1,21 +1,24 @@
 import {storage} from '../core/utils';
 
 function toHTML(key) {
-  const model = storage(key)
-  const id = key.split(':')[1]
+  const model = storage(key);
+  const id = key.split(':')[1];
   return `
     <li class="db__record">
       <a href="#excel/${id}">
         ${model.title ? model.title : 'Без названия'}
       </a>
-      <strong>12.06.2020</strong>
+      <strong>
+        ${new Date(model.openedDate).toLocaleDateString()}
+        ${new Date(model.openedDate).toLocaleTimeString()}
+      </strong>
     </li>
   `
 }
 
 // excel:14234234
 // excel:54765
-function getAllKeys() {
+function getAllKeys(date) {
   const keys = [];
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);

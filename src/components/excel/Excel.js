@@ -1,6 +1,7 @@
 import {$} from '../../core/dom';
 import {Emitter} from '../../core/Emitter';
 import {StoreSubscriber} from '../../core/StoreSubscriber';
+import {updateDate} from '../redux/actions';
 
 export class Excel {// this => Excel
   constructor(options) {
@@ -33,6 +34,7 @@ export class Excel {// this => Excel
 
   // Отвечает за отрисовку
   init() {
+    this.store.dispatch(updateDate())
     // Добавляет в конец корневого элемента компоненты из getRoot
     // Подписка компонентов, логика в Классе StoreSubscriber
     this.subscriber.subscribeComponents(this.components);
