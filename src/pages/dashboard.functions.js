@@ -1,9 +1,12 @@
+import {storage} from '../core/utils';
+
 function toHTML(key) {
-  const thisStorage = JSON.parse(localStorage[key])
+  const model = storage(key)
+  const id = key.split(':')[1]
   return `
     <li class="db__record">
-      <a href="#excel/${key.slice(6)}">
-        ${thisStorage.title ? thisStorage.title : 'Без названия'}
+      <a href="#excel/${id}">
+        ${model.title ? model.title : 'Без названия'}
       </a>
       <strong>12.06.2020</strong>
     </li>

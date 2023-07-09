@@ -3,6 +3,7 @@ import {defaultTitle} from '../../constants'
 import {$} from '../../core/dom';
 import {changeTytle} from '../redux/actions';
 import {debounce} from '../../core/utils';
+import {ActiveRoute} from '../../core/routes/ActiveRoute';
 
 export class Header extends ExcelComponent {
   static className = 'excel__header';
@@ -26,12 +27,15 @@ export class Header extends ExcelComponent {
 
   onClick(event) {
     const $target = $(event.target);
-    if ($target.data.type === 'buttonDelete') {
-      window.localStorage.removeItem('excel:' + window.location.hash.slice(7))
-      window.location.hash = 'dashboard'
-    }
-    if ($target.data.type === 'buttonBack') {
-      window.location.hash = 'dashboard'
+    if ($target.data.button === 'remove') {
+      const decision = confirm('Вы действительно хотите удалить таблицу');
+
+      if (decision) {
+        localStorage.removeItem('excel:' + ActiveRoute.param)
+        ActiveRoute.navigate('dashboard');
+      }
+    } else if ($target.data.button === 'exit') {
+      ActiveRoute.navigate('dashboard');
     }
   }
 
@@ -40,11 +44,11 @@ export class Header extends ExcelComponent {
     return `
       <input type="text" class="input" value="${title}">
       <div>
-        <div class="button" data-type="buttonDelete">
-          <i class="material-icons" data-type="buttonDelete">delete</i>
+        <div class="button" data-button="remove">
+          <i class="material-icons" data-button="remove">delete</i>
         </div>
-        <div class="button" data-type="buttonBack">
-          <i class="material-icons" data-type="buttonBack">exit_to_app</i>
+        <div class="button" data-button="exit">
+          <i class="material-icons" data-button="exit">exit_to_app</i>
         </div>
       </div>
     `
